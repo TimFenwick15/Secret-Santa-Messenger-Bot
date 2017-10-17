@@ -1,0 +1,17 @@
+{
+  "name": "secret-santa-messenger-bot",
+  "version": "1.0.0",
+  "description": "A Secret Santa Messenger bot.",
+  "main": "bot-server.js",
+  "scripts": {
+    "start": "node bot-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  }
+}
