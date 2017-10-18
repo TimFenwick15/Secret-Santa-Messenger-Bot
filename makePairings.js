@@ -1,6 +1,8 @@
+'use strict'
+
 const convertExcludesToIncludes = obj => {
   const peopleIncludes = {}
-  for (key in obj) {
+  for (let key in obj) {
     peopleIncludes[key] = Object.keys(obj).filter(x => !obj[key].includes(x))
   }
   return peopleIncludes
@@ -8,7 +10,7 @@ const convertExcludesToIncludes = obj => {
 
 const addArrayLengthToKey = obj => {
   const peopleWithNewKey = {}
-  for (key in obj) {
+  for (let key in obj) {
     let newKey
     if (key.indexOf('-') === - 1)
       newKey = key
@@ -31,13 +33,22 @@ const makePairings = obj => {
   const pairings = {}
   while (Object.keys(obj).length) {
     obj = sortPeopleByKeyNumber(obj)
-    const currentKey = Object.keys(obj)[0]
-    pairings[currentKey.split('-')[0]] = obj[currentKey][Math.floor(Math.random() * obj[currentKey].length)]
-    for (remainingKeys in obj) {
-      obj[remainingKeys] = obj[remainingKeys].filter(x => x !== pairings[currentKey.split('-')[0]])
-    }
-    delete obj[currentKey]
+    const buyerKey = Object.keys(obj)[0]
+    const buyerName = buyerKey.split('-')[0]
+    const receiverName = obj[buyerKey][Math.floor(Math.random() * obj[buyerKey].length)]
+    const receiverKey = Object.keys(obj).find(x => x.indexOf(receiverName) !== - 1)
+
+    // If a buys for b, we don't want b to buy for a
+    if (receiverKey)
+      obj[receiverKey] = obj[receiverKey].filter(x => x !== buyerName)
+
+    for (let key in obj)
+      obj[key] = obj[key].filter(x => x !== receiverName)
+
+    delete obj[buyerKey]
     obj = addArrayLengthToKey(obj)
+      
+    pairings[buyerName] = receiverName
   }
   return pairings
 }
