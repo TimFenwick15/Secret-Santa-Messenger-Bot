@@ -29,13 +29,13 @@ const sortPeopleByKeyNumber = obj => {
   return sortedPeople 
 }
 
-const makePairings = obj => {
+const makePairings = (obj, randomFunction = obj => obj[Math.floor(Math.random() * obj.length)]) => {
   const pairings = {}
   while (Object.keys(obj).length) {
     obj = sortPeopleByKeyNumber(obj)
     const buyerKey = Object.keys(obj)[0]
     const buyerName = buyerKey.split('-')[0]
-    const receiverName = obj[buyerKey][Math.floor(Math.random() * obj[buyerKey].length)]
+    const receiverName = randomFunction(obj[buyerKey])
     const receiverKey = Object.keys(obj).find(x => x.indexOf(receiverName) !== - 1)
 
     // If a buys for b, we don't want b to buy for a
@@ -48,7 +48,12 @@ const makePairings = obj => {
     delete obj[buyerKey]
     obj = addArrayLengthToKey(obj)
       
-    pairings[buyerName] = receiverName
+    if (receiverName)
+      pairings[buyerName] = receiverName
+    else {
+      console.error('Error: no solution exists for this data')
+      return null
+    }
   }
   return pairings
 }

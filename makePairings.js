@@ -1,3 +1,4 @@
+'use strict'
 const santa = require('./secretSantaPairings')
 const data = require('./data')
 let people = {}
