@@ -50,5 +50,10 @@ module.exports = {
     Alex: {
       appUserID: null,
       excludes: ['Alex', 'Dave']
+    },
+    Adam: {
+      appUserID: null,
+      excludes: ['Adam']
     }
   }
+//console.log(Object.keys(module.exports).length)

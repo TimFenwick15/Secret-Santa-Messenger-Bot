@@ -60,7 +60,19 @@ const makePairings = (obj, randomFunction = obj => obj[Math.floor(Math.random() 
 
 const sendMessages = (peopleWithEmails, peopleWithRecipients) => {
   try {
-    console.dir(peopleWithRecipients)
+    // for each peopleWithRecipients, write the result to a text file. Place in results dir
+    const fs = require('fs')
+    const resultsDirectory = './results'
+    if (!fs.existsSync(resultsDirectory))
+      fs.mkdirSync(resultsDirectory)
+    else {
+      const files = fs.readdirSync(resultsDirectory)
+      files.forEach(x => fs.unlinkSync(`${resultsDirectory}/${x}`))
+    }
+    for (let key in peopleWithRecipients)
+      fs.writeFileSync(`${resultsDirectory}/${key}.txt`, `${key} is buying for ${peopleWithRecipients[key]}`)
+
+    console.log(`Results written to ${resultsDirectory}`)
     return true
   }
   catch (e) {
