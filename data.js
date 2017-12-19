@@ -1,59 +1,60 @@
 module.exports = {
     Tim: {
       appUserID: 1669246959772813,
-      excludes: ['Brad', 'Sam', 'Tim']
+      excludes: ['Brad', 'Sam', 'Joe', 'Tim']
     },
     Luke: {
       appUserID: null,
-      excludes: ['Luke', 'Morgan']
+      excludes: ['Luke', 'Morgan', 'Tim']
     },
     Brad: {
       appUserID: null,
-      excludes: ['Brad', 'Chad']
+      excludes: ['Brad', 'Chad', 'Morgan']
     },
     Chad: {
       appUserID: null,
-      excludes: ['Joe', 'Chad']
+      excludes: ['Joe', 'Luke', 'Chad']
     },
     Callum: {
       appUserID: null,
-      excludes: ['Callum', 'Sam']
+      excludes: ['Callum', 'Alex', 'Sam']
     },
     Dave: {
       appUserID: null,
-      excludes: ['Dave', 'Tim']
+      excludes: ['Dave', 'Callum', 'Tim']
     },
     Jon: {
       appUserID: null,
-      excludes: ['Jon']
+      excludes: ['Jon', 'Charlie']
     },
     Chris: {
       appUserID: null,
-      excludes: ['Chris']
+      excludes: ['Chris', 'Brad']
     },
     Charlie: {
       appUserID: null,
-      excludes: ['Charlie', 'Luke']
+      excludes: ['Charlie', 'Luke', 'Sam']
     },
     Morgan: {
       appUserID: null,
-      excludes: ['Morgan', 'Callum']
+      excludes: ['Morgan', 'Callum', 'Adam']
     },
     Sam: {
       appUserID: null,
-      excludes: ['Sam', 'Tim', 'Charlie']
+      excludes: ['Sam', 'Tim', 'Charlie', 'Dave']
     },
     Joe: {
       appUserID: null,
-      excludes: ['Joe', 'Alex']
+      excludes: ['Joe', 'Alex', 'Jon']
     },
     Alex: {
       appUserID: null,
-      excludes: ['Alex', 'Dave']
+      excludes: ['Alex', 'Dave', 'Chris']
     },
     Adam: {
       appUserID: null,
-      excludes: ['Adam']
+      excludes: ['Adam', 'Chad']
     }
   }
 //console.log(Object.keys(module.exports).length)
+
